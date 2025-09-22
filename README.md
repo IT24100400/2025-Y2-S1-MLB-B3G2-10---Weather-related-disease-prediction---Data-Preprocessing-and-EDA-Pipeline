@@ -28,9 +28,11 @@ Key Statistics:
   •	Shape: Approximately 4,981 rows and 52-55 columns (after preprocessing; original might have ~5,200 rows before cleaning).
   
   •	Columns:
+  
     o	Demographics: Age (numerical, range: 1-100), Gender (binary: 0 for female, 1 for male).
     o	Weather Features (numerical/continuous): Temperature (C) (range: -15.125 to 40.996), Humidity (range: 0.370833 to 1.0), Wind Speed (km/h) (range: 0.008 to 31.303).
     o	Symptoms (binary: 0/1 indicators): ~45 columns like nausea, joint_pain, abdominal_pain, high_fever, chills, shortness_of_breath, reduced_smell_and_taste, skin_irritation, itchiness, throbbing_headache, confusion, back_pain, knee_ache, etc.
+  
     
     o	Target Variables: 
       	prognosis: Original multi-class label (e.g., "Heart Attack", "Influenza", "Dengue", "Sinusitis", "Migraine", etc.).
@@ -40,13 +42,17 @@ Key Statistics:
       	"Migraine" (~941 instances).
       	"Other" (~3,246 instances, including Influenza, Dengue, etc.).
       	One-hot encoded disease columns (e.g., disease_Heart Attack, disease_Migraine, etc.) for multi-class handling.
+      
   •	Data Types: Mostly numerical (floats for weather, integers for binaries and age), with some strings for targets before encoding.
+  
   •	Challenges: 
+  
       o	Imbalanced classes: "Other" dominates (~65%), while "Heart Attack" and "Migraine" are minorities.
       o	Missing Values: Handled by imputation (e.g., mean for continuous, mode for binary).
       o	Outliers: Removed using IQR method (e.g., reduced rows from 5,200 to 4,981).
       o	Low Variance Features: Removed if variance < 0.0.
       o	Scaling: Applied MinMaxScaler to normalize continuous features to [0,1].
+      
   •	Sources/Notes: The dataset is loaded from CSV files in the notebooks. It's cleaned progressively, with final versions like weather_disease_onehot_scaled.csv, weather_disease_lowvar.csv, weather_disease_chi_Square.csv, and weather_disease_final.csv.
   
 Class Distribution (from EDA):
@@ -58,11 +64,17 @@ Class Distribution (from EDA):
 Group Member Roles
 
 Based on the notebook filenames (which include student IDs like "IT24100XXX"), this appears to be a group project where each member handled a specific preprocessing or feature engineering task. Here's an inferred breakdown:
+
 •	IT24100477: Handled Encoding (LabelEncoder for targets, one-hot encoding for multi-class prognosis). Created visualizations like bar plots for class distribution.
+
 •	IT24100400: Responsible for MinMax Scaling and Box Plots. Applied scaling to normalize continuous features (e.g., Age, Temperature) and visualized distributions with box plots before/after scaling.
+
 •	IT24100492: Focused on Variance Threshold Feature Selection. Removed low-variance features (threshold=0.0) to eliminate redundant columns.
+
 •	IT24100502: Managed Chi-Square Feature Selection. Used SelectKBest with chi2 to select top features based on statistical dependence with the target.
+
 •	IT24100423: Dealt with Outlier Removal. Used IQR method to detect and remove outliers in continuous columns (e.g., Age, Temperature), reducing dataset size and providing before/after summaries.
+
 •	IT24100562: Handled Missing Data. Performed EDA on missing values (heatmaps, histograms), imputed using mean/mode strategies, and visualized class balances.
 
 •	Group Pipeline (No Specific ID): Integrated all steps into a single pipeline notebook. This combines loading, cleaning, encoding, scaling, feature selection, and saving the final dataset. It uses tools like SimpleImputer for missing values and joblib for model persistence.
@@ -75,6 +87,7 @@ How to Run the Code
 These are Google Colab environment. They require Python 3+ and libraries like Pandas, NumPy, Matplotlib, Seaborn, and Scikit-learn (install via pip install pandas numpy matplotlib seaborn scikit-learn).
 
 Steps to Run:
+
  1.	Setup Environment: 
     o	Google Colab (Recommended, as notebooks use from google.colab import files for uploads): 
  2.	Dependencies: 
