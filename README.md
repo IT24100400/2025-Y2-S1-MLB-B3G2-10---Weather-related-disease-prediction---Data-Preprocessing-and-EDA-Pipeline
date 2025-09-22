@@ -26,10 +26,12 @@ The dataset is named Weather-related disease prediction (originally from a CSV f
 Key Statistics:
 
   •	Shape: Approximately 4,981 rows and 52-55 columns (after preprocessing; original might have ~5,200 rows before cleaning).
-  •	Columns: 
+  
+  •	Columns:
     o	Demographics: Age (numerical, range: 1-100), Gender (binary: 0 for female, 1 for male).
     o	Weather Features (numerical/continuous): Temperature (C) (range: -15.125 to 40.996), Humidity (range: 0.370833 to 1.0), Wind Speed (km/h) (range: 0.008 to 31.303).
     o	Symptoms (binary: 0/1 indicators): ~45 columns like nausea, joint_pain, abdominal_pain, high_fever, chills, shortness_of_breath, reduced_smell_and_taste, skin_irritation, itchiness, throbbing_headache, confusion, back_pain, knee_ache, etc.
+    
     o	Target Variables: 
       	prognosis: Original multi-class label (e.g., "Heart Attack", "Influenza", "Dengue", "Sinusitis", "Migraine", etc.).
       	prognosis_encoded: Label-encoded version of prognosis.
